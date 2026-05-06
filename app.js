@@ -1,5 +1,4 @@
 const mongoclient = require('mongodb').MongoClient;
-//const url = "mongodb://bigworld3863_db_user:1111@ac-d9mmrty-shard-00-00.vzh6ita.mongodb.net:27017,ac-d9mmrty-shard-00-01.vzh6ita.mongodb.net:27017,ac-d9mmrty-shard-00-02.vzh6ita.mongodb.net:27017/?ssl=true&replicaSet=atlas-196oho-shard-0&authSource=admin&appName=t30ester";
 let mydb;
 
 require('dotenv').config();
