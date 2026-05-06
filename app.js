@@ -22,8 +22,8 @@ mongoclient.connect(MONGO_URL).then(client => {
     console.log(err);
 });
 
-app.get('/book', function(req, res){
-    res.send('학생 관련 페이지다.');
+app.get('/teacher', function(req, res){
+    res.sendFile(__dirname + '/public/teacher.html');
 });
 
 app.get('/student', function(req, res){
@@ -45,7 +45,7 @@ app.post('/save', function(req, res){
     ).then(result =>{
         console.log(result);
         console.log('데이터 추가 성공');
-        res.redirect('/student');
+        res.redirect(req.get('Referer') || '/student');
     }).catch(err => {
         console.log(err);
         res.status(500).send('데이터 추가 실패');

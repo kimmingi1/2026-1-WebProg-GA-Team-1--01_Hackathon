@@ -54,11 +54,13 @@
     <div class="card">
         <div class="card-body">
             <h5 class="card-title">익명 피드백 / 글 남기기</h5>
-            <input type="text" id="authorInput" class="form-control mb-2" placeholder="작성자명">
-            <textarea id="contentInput" class="form-control mb-3" rows="3" placeholder="내용을 입력하세요..."></textarea>
-            <div class="d-flex justify-content-end">
-                <button class="btn btn-primary" onclick="addPost()">작성하기</button>
-            </div>
+            <form action="/save" method="post">
+                <input type="text" name="title" class="form-control mb-2" placeholder="제목">
+                <textarea name="content" class="form-control mb-3" rows="3" placeholder="내용을 입력하세요..."></textarea>
+                <div class="d-flex justify-content-end">
+                    <button type="submit" class="btn btn-primary">작성하기</button>
+                </div>
+            </form>
         </div>
     </div>
 </div>
