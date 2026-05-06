@@ -1,0 +1,102 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>부트스트랩 게시판</title>
+    <!-- 부트스트랩 CSS CDN -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+</head>
+<body>
+
+<div class="container mt-5">
+    <h2 class="mb-4">게시판 리스트</h2>
+    
+    <!-- 게시판 테이블 -->
+    <table class="table table-striped table-hover border">
+        <thead class="table-dark">
+            <tr>
+                <th>번호</th>
+                <th>제목</th>
+                <th>작성자</th>
+                <th>작성일</th>
+                <th>공감</th>
+            </tr>
+        </thead>
+        <tbody id="boardBody">
+            <tr>
+                <td>3</td>
+                <td><a href="#" class="text-decoration-none text-dark">이해가 잘되는 것 같습니다.</a></td>
+                <td>김민기</td>
+                <td>2026-05-06</td>
+                <td>10</td>
+            </tr>
+            <tr>
+                <td>2</td>
+                <td><a href="#" class="text-decoration-none text-dark">최고의 강의입니다</a></td>
+                <td>박준한</td>
+                <td>2026-05-05</td>
+                <td>28</td>
+            </tr>
+            <tr>
+                <td>1</td>
+                <td><a href="#" class="text-decoration-none text-dark">잘못된 부분이 있습니다.</a></td>
+                <td>신성현</td>
+                <td>2026-05-03</td>
+                <td>300</td>
+            </tr>
+        </tbody>
+    </table>
+</div>
+
+<!-- 익명 피드백 및 글 작성 영역 -->
+<div class="container mt-4">
+    <div class="card">
+        <div class="card-body">
+            <h5 class="card-title">익명 피드백 / 글 남기기</h5>
+            <input type="text" id="authorInput" class="form-control mb-2" placeholder="작성자명">
+            <textarea id="contentInput" class="form-control mb-3" rows="3" placeholder="내용을 입력하세요..."></textarea>
+            <div class="d-flex justify-content-end">
+                <button class="btn btn-primary" onclick="addPost()">작성하기</button>
+            </div>
+        </div>
+    </div>
+</div>
+
+<script>
+    // 글 작성 시 테이블에 추가하는 간단한 스크립트
+    function addPost() {
+        const author = document.getElementById('authorInput').value;
+        const content = document.getElementById('contentInput').value;
+        const boardBody = document.getElementById('boardBody');
+        
+        if(!author || !content) {
+            alert('작성자와 내용을 모두 입력해주세요.');
+            return;
+        }
+
+        // 오늘 날짜 구하기
+        const today = new Date().toISOString().slice(0, 10);
+        
+        // 새로운 행 생성
+        const newRow = `
+            <tr>
+                <td>New</td>
+                <td><a href="#" class="text-decoration-none text-dark">${content}</a></td>
+                <td>${author}</td>
+                <td>${today}</td>
+                <td>0</td>
+            </tr>
+        `;
+        
+        // 맨 위에 추가
+        boardBody.insertAdjacentHTML('afterbegin', newRow);
+        
+        // 입력창 초기화
+        document.getElementById('authorInput').value = '';
+        document.getElementById('contentInput').value = '';
+    }
+</script>
+
+</body>
+</html>
