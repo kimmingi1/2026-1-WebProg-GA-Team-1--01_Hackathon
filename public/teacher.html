@@ -54,11 +54,11 @@
 <script>
     // 글 삭제 기능
     function deletePost(button) {
-        // confirm을 사용하여 삭제 여부 재확인
+       
         if (confirm('정말로 이 글을 삭제하시겠습니까?')) {
-            // 버튼(this)의 부모(td)의 부모(tr)를 찾아 삭제
-            const row = button.closest('tr'); // closest()가 더 직관적이고 안전합니다.
-            row.remove(); // 잘려있던 부분 수정
+          
+            const row = button.closest('tr'); 
+            row.remove(); 
         }
     }
 </script>
